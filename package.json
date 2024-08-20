@@ -4,6 +4,10 @@
   "description": "A small component library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/karimtmagdy/tailwind-unique.git"
+  },
   "scripts": {
     "build": "tsc && npx postcss src/index.css -o dist/index.css",
     "prepublishOnly": "npm run build"
