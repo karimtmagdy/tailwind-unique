@@ -1,6 +1,6 @@
 {
   "name": "tailwind-unique",
-  "version": "2.0.0-alpha.2",
+  "version": "2.0.0",
   "description": "A small component library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,7 +10,8 @@
   },
   "scripts": {
     "build": "tsc && npx postcss src/index.css -o dist/index.css",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "postversion": "git push && git push --tags && npm publish"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
