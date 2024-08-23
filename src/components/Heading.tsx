@@ -1,3 +1,4 @@
+import React from "react";
 import { cn } from "../utils/utils";
 import { tv } from "tailwind-variants";
 interface HeadingProps {
@@ -12,8 +13,8 @@ const Heading: React.FC<HeadingProps> = ({
   children,
   label,
 }) => {
-  const  styled = tv({
-    // base: "font-bold leading-tight",
+  const styled = tv({
+    base: "font-bold leading-tight",
     variants: {
       level: {
         1: "text-4xl",
@@ -24,25 +25,25 @@ const Heading: React.FC<HeadingProps> = ({
         6: "text-base",
       },
     },
-    // compoundVariants: [
-    //   {
-    //     level: [1, 2, 3, 4, 5, 6],
-    //   },
-    // ],
+    compoundVariants: [
+      {
+        level: [1, 2, 3, 4, 5, 6],
+      },
+    ],
     defaultVariants: {
       level: 1,
     },
   });
 
-  const Tag = `h${level}`;
-  return (
-    <Tag className={cn(styled({ level }), className)}>
+  const Tag = `h${level}` as keyof JSX.IntrinsicElements;
+  return React.createElement(
+    Tag,
+    { className: cn(styled({ level }), className) },
+    <>
       {label}
       {children}
-    </Tag>
+    </>
   );
 };
-// function Tag({ children, ...props }: any) {
-//   return <Tag {...props}>{children}</Tag>;
-// }
+
 export default Heading;
