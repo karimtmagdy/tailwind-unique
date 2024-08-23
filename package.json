@@ -1,9 +1,11 @@
 {
   "name": "tailwind-unique",
-  "version": "2.0.0-alpha.9",
+  "version": "3.0.1-alpha.3",
   "description": "A small component library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "author": "Karim tarek",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/karimtmagdy/tailwind-unique.git"
@@ -11,7 +13,7 @@
   "scripts": {
     "build": "tsc && npx postcss src/index.css -o dist/index.css",
     "prepublishOnly": "npm run build",
-    "postversion": "git push && git push --tags && npm publish"
+    "postversion": "npm run prepublishOnly && npm publish"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
@@ -26,7 +28,7 @@
     "typescript": "^4.5.4"
   },
   "peerDependencies": {
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   }
 }

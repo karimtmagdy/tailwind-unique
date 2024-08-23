@@ -10,7 +10,7 @@ interface ButtonProps {
   icon?: string | React.ReactElement;
   square?: 1 | 2 | 3;
   disabled?: boolean;
-  size?: "xs" | "sm" | "md" | "lg"  
+  size?: "xs" | "sm" | "md" | "lg";
   color?: "base" | "warning" | "primary" | "danger" | "success" | "smooth";
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   style?: React.CSSProperties;
@@ -33,13 +33,10 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   const styled = tv({
     base: [
-      "outline-none",
-      "border border-transparent",
-      "transition-all duration-100",
-      "leading-tight font-medium",
+      "outline-none leading-tight font-medium border transition-all duration-100",
+      " border-transparent",
       "flex items-center",
       `${square ? "justify-around border-inherent" : "justify-center"}`,
-      ,
     ],
     variants: {
       fullWidth: { true: "w-full", false: "w-auto" },
@@ -72,12 +69,41 @@ const Button: React.FC<ButtonProps> = ({
         lg: ["h-11 px-5 py-2.5 text-lg"],
       },
       color: {
-        base: ["bg-black dark:bg-white", "text-white dark:text-black"],
+        base: [
+          "bg-black dark:bg-white",
+          "text-white dark:text-black",
+          "hover:bg-black/95 dark:hover:bg-white/90",
+          "active:bg-black/80 dark:active:bg-white/80",
+        ],
         smooth: ["bg-transparent text-black", "bg-transparent dark:text-white"],
-        primary: [],
-        warning: [],
-        danger: [],
-        success: ["bg-accent-500 text-white hover:bg-accent-600"],
+        primary: [
+          "bg-primary-500 dark:bg-primary-700",
+          "text-white dark:text-white",
+          "hover:bg-primary-700/95 dark:hover:bg-primary-800/90",
+          "active:bg-primary-800/90 dark:active:bg-primary-800/80",
+          "active:text-neutral-400 dark:active:text-neutral-500",
+        ],
+        warning: [
+          "bg-twisted-500 dark:bg-twisted-700",
+          "text-white dark:text-white",
+          "hover:bg-twisted-700/95 dark:hover:bg-twisted-800/90",
+          "active:bg-twisted-800/90 dark:active:bg-twisted-800/80",
+          "active:text-neutral-400 dark:active:text-neutral-500",
+        ],
+        danger: [
+          "bg-danger-500 dark:bg-danger-700",
+          "text-white dark:text-white",
+          "hover:bg-danger-700/95 dark:hover:bg-danger-800/90",
+          "active:bg-danger-800/90 dark:active:bg-danger-800/80",
+          "active:text-neutral-400 dark:active:text-neutral-500",
+        ],
+        success: [
+          "bg-accent-500 dark:bg-accent-700",
+          "text-white dark:text-white",
+          "hover:bg-accent-700/95 dark:hover:bg-accent-800/90",
+          "active:bg-accent-800/90 dark:active:bg-accent-800/80",
+          "active:text-neutral-400 dark:active:text-neutral-500",
+        ],
       },
     },
     compoundVariants: [
@@ -86,7 +112,7 @@ const Button: React.FC<ButtonProps> = ({
         half: ["left", "right"],
         square: [1, 2, 3],
         fullWidth: [true, false],
-        size: ["xs", "sm", "md", "lg" ],
+        size: ["xs", "sm", "md", "lg"],
         color: ["base", "smooth", "primary", "warning", "danger", "success"],
 
         // className: ["rounded-md"],
@@ -100,7 +126,7 @@ const Button: React.FC<ButtonProps> = ({
     },
   });
   const appliedProps = square
-    ? { shape, square, half }
+    ? { shape, half }
     : { size, shape, fullWidth, color, half };
   return (
     <button

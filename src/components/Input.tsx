@@ -1,9 +1,9 @@
-import { tv } from "tailwind-variants";
 import { cn } from "../utils/utils";
+import { tv } from "tailwind-variants";
 
 interface InputProps {
-  value: string;
   className: string;
+  label: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   size?: "sm" | "md" | "lg";
@@ -12,19 +12,20 @@ interface InputProps {
 
 const Input: React.FC<InputProps> = ({
   size,
+  label,
   color,
   className,
-  value,
+
   onChange,
   placeholder,
 }) => {
   const style = tv({
-    base: "w-full px-4 py-2 border border-gray-300 rounded",
+    base: ["w-full", "bg-transparent", "border rounded"],
     variants: {
       size: {
-        sm: "py-2 px-3 text-sm",
-        md: "py-3 px-4 text-md",
-        lg: "py-4 px-6 text-lg",
+        sm: "py-1 px-3 text-sm",
+        md: "py-2 px-4 text-md",
+        lg: "py-3 px-6 text-lg",
       },
       color: {
         red: "border-red-500",
@@ -33,13 +34,18 @@ const Input: React.FC<InputProps> = ({
     },
   });
   return (
-    <input
-      value={value}
-      onChange={onChange}
-      placeholder={placeholder}
-      className={cn(className, style({ size, color }))}
-      // className={style({ size, color })}}
-    />
+    <fieldset>
+      <legend className="sr-only">{label}</legend>
+      <label htmlFor={label}>{label}</label>
+      <input
+        id={label}
+        name={label}
+        onChange={onChange}
+        placeholder={placeholder}
+        className={cn(className, style({ size, color }))}
+        // className={style({ size, color })}}
+      />
+    </fieldset>
   );
 };
 

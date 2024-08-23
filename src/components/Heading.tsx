@@ -3,14 +3,14 @@ import { tv } from "tailwind-variants";
 interface HeadingProps {
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   className?: string;
-  text?: string;
+  label?: string;
   children?: React.ReactNode;
 }
 const Heading: React.FC<HeadingProps> = ({
   level,
   className,
   children,
-  text,
+  label,
 }) => {
   const  styled = tv({
     // base: "font-bold leading-tight",
@@ -34,15 +34,15 @@ const Heading: React.FC<HeadingProps> = ({
     },
   });
 
-  // const Tag = `h${level}`;
+  const Tag = `h${level}`;
   return (
     <Tag className={cn(styled({ level }), className)}>
-      {text}
+      {label}
       {children}
     </Tag>
   );
 };
-function Tag({ children, ...props }: any) {
-  return <Tag {...props}>{children}</Tag>;
-}
+// function Tag({ children, ...props }: any) {
+//   return <Tag {...props}>{children}</Tag>;
+// }
 export default Heading;

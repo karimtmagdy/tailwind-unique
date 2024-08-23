@@ -1,44 +1,14 @@
 // tailwind.config.js
 /** @type {import('tailwindcss').Config} */
-import tailwindcss from "tailwindcss";
+// import tailwindcss from "tailwindcss";
 module.exports = {
-  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  purge: ["./src/**/*.{js,ts,jsx,tsx}"],
+  // safelist: ['class-name-to-keep', /^bg-/], // استخدام regex أو أسماء classes محددة
+  // /^btn-/,  // تعبير منتظم لحماية الـ classes اللي بتبدأ بـ btn-
+
   theme: {
     extend: {
       colors: {
-        "true-black": {
-          100: "#F9F9F9",
-          200: "#F3F3F3",
-          300: "#E7E7E7",
-          400: "#DADADA",
-          500: "#CFCFCF",
-          600: "#C9C9C9",
-          700: "#B3B3B3",
-          800: "#9C9C9C",
-          900: "#868686",
-          1000: "#707070",
-          1100: "#5A5A5A",
-          1200: "#434343",
-          1300: "#2D2D2D",
-          1400: "#171717",
-          1500: "#000000",
-        },
-        "true-white": {
-          100: "#FFFFFF",
-          200: "#FDFDFD",
-          300: "#FBFBFB",
-          400: "#F9F9F9",
-          500: "#F7F7F7",
-          600: "#F5F5F5",
-          700: "#F3F3F3",
-          800: "#F1F1F1",
-          900: "#EFEFEF",
-          1000: "#EDEDED",
-          1100: "#EBEBEB",
-          1200: "#E9E9E9",
-          1300: "#E7E7E7",
-          1400: "#E5E5E5",
-        },
         primary: {
           DEFAULT: "#3330ff",
           50: "#e8eeff",
@@ -126,5 +96,5 @@ module.exports = {
       },
     },
   },
-  plugins: [tailwindcss()],
+  plugins: [],
 };
